@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// The partition function puts the 0th element in its final place
 func partition(arr []int) int {
 
 	if len(arr) <= 1 {
@@ -22,14 +23,16 @@ func partition(arr []int) int {
 	return i
 }
 
+// No extra memory for this algo!
 func qsort(arr []int) {
 	pos := partition(arr)
+	// Element at pos isnow at its final place.
 	if pos > 1 {
-		// Sort left
+		// Sort left side where all elements < the one just partitioned exist
 		qsort(arr[:pos-1])
 	}
 	if pos < len(arr) {
-		// Sort right
+		// Sort right side where all elements > the one just partitioned exist
 		qsort(arr[pos:])
 	}
 }
